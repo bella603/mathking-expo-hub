@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수학대왕 CLASS 체험 | 박람회 부스</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2a2a2a 100%);
+            color: #ffffff;
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 헤더 */
+        .header {
+            text-align: center;
+            padding: 60px 0 40px;
+            border-bottom: 1px solid #333;
+        }
+
+        .header h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #835EEB 0%, #B794F6 50%, #E879F9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .highlight {
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            color: #835EEB;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-shadow: 0 2px 4px rgba(131, 94, 235, 0.3);
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: #8D94A0;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .fullscreen-hint {
+            font-size: 0.9rem;
+            color: #575C64;
+            margin-top: 15px;
+        }
+
+        /* 메인 액션 버튼들 */
+        .main-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 50px 0;
+        }
+
+        .big-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 28px 24px;
+            border: none;
+            border-radius: 20px;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            min-height: 100px;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .big-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .big-btn:hover::before {
+            left: 100%;
+        }
+
+        .big-btn:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(131, 94, 235, 0.4);
+        }
+
+        .big-btn:active {
+            transform: translateY(-2px) scale(0.98);
+        }
+
+        .big-btn.primary {
+            background: linear-gradient(135deg, #835EEB 0%, #9F7AEA 50%, #B794F6 100%);
+            box-shadow: 0 12px 24px rgba(131, 94, 235, 0.3);
+        }
+
+        .big-btn.secondary {
+            background: linear-gradient(135deg, #4C51BF 0%, #667EEA 50%, #764BA2 100%);
+            box-shadow: 0 12px 24px rgba(76, 81, 191, 0.3);
+        }
+
+        .big-btn.success {
+            background: linear-gradient(135deg, #48BB78 0%, #68D391 50%, #9AE6B4 100%);
+            box-shadow: 0 12px 24px rgba(72, 187, 120, 0.3);
+        }
+
+        .big-btn.warning {
+            background: linear-gradient(135deg, #ED8936 0%, #F6AD55 50%, #FBD38D 100%);
+            box-shadow: 0 12px 24px rgba(237, 137, 54, 0.3);
+        }
+
+        /* 실증 데이터 섹션 */
+        .stats-section {
+            background: linear-gradient(135deg, rgba(131, 94, 235, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(131, 94, 235, 0.2);
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(131, 94, 235, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .stats-section h2 {
+            text-align: center;
+            background: linear-gradient(135deg, #835EEB 0%, #B794F6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 32px;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 28px;
+            margin: 40px 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 32px 24px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(131, 94, 235, 0.1) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(131, 94, 235, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(131, 94, 235, 0.2);
+            border-color: #835EEB;
+        }
+
+        .stat-number {
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #835EEB 0%, #E879F9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1.1rem;
+            line-height: 1.3;
+        }
+
+        .stats-note {
+            text-align: center;
+            color: #8D94A0;
+            font-size: 0.95rem;
+            margin-top: 24px;
+            font-style: italic;
+        }
+
+        /* 설명 섹션 */
+        .description {
+            text-align: center;
+            margin: 50px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .description p {
+            color: #8D94A0;
+            font-size: 1.1rem;
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        .brand-motto {
+            color: #835EEB;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
+        /* 튜토리얼 토글 버튼 */
+        .tutorial-toggle {
+            position: fixed;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #835EEB 0%, #9F7AEA 100%);
+            color: white;
+            border: none;
+            padding: 16px 14px;
+            border-radius: 16px 0 0 16px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 8px 20px rgba(131, 94, 235, 0.3);
+            transition: all 0.3s ease;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .tutorial-toggle:hover {
+            background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%);
+            transform: translateY(-50%) translateX(-4px);
+            box-shadow: 0 12px 25px rgba(131, 94, 235, 0.4);
+        }
+
+        /* 푸터 */
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            color: #575C64;
+            border-top: 1px solid #333;
+            margin-top: 60px;
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
+            
+            .main-actions {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .big-btn {
+                padding: 24px 20px;
+                font-size: 1.2rem;
+                min-height: 90px;
+            }
+            
+            .stats-section {
+                padding: 28px 20px;
+            }
+            
+            .stat-card {
+                padding: 24px 16px;
+            }
+            
+            .tutorial-toggle {
+                bottom: 24px;
+                top: auto;
+                right: 24px;
+                transform: none;
+                border-radius: 16px;
+                writing-mode: horizontal-tb;
+                text-orientation: mixed;
+                padding: 14px 20px;
+            }
+
+            .tutorial-toggle:hover {
+                transform: translateY(-4px);
+            }
+        }
+
+        /* 로딩 애니메이션 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container > * {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .main-actions .big-btn:nth-child(1) { animation-delay: 0.1s; }
+        .main-actions .big-btn:nth-child(2) { animation-delay: 0.2s; }
+        .main-actions .big-btn:nth-child(3) { animation-delay: 0.3s; }
+        .main-actions .big-btn:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <!-- 튜토리얼 토글 버튼 -->
+    <button class="tutorial-toggle" onclick="showTutorialAlert()" aria-label="튜토리얼 패널 열기">
+        📚 튜토리얼
+    </button>
+
+    <div class="container">
+        <!-- 헤더 -->
+        <header class="header">
+            <h1>🏆 수학대왕 CLASS</h1>
+            <p class="highlight">170만 학생이 선택한 1등 AI 수학프로그램</p>
+            <p class="subtitle">1:1 개인 맞춤형 교육의 실현<br>초3부터 고3까지 아우르는 AI 수학 학습 서비스</p>
+            <div class="fullscreen-hint">💡 전체화면(F11)으로 보시면 더 편합니다</div>
+        </header>
+
+        <!-- 메인 액션 버튼들 -->
+        <div class="main-actions">
+            <button class="big-btn primary" onclick="openExperience()">
+                🚀 지금 바로 체험하기
+            </button>
+            <button class="big-btn secondary" onclick="showTutorialAlert()">
+                📚 사용법 가이드 보기
+            </button>
+            <button class="big-btn success" onclick="openApply()">
+                ✨ 체험계정 신청
+            </button>
+            <button class="big-btn warning" onclick="openGuide()">
+                📖 상세 사용 가이드
+            </button>
+        </div>
+
+        <!-- 실증 데이터 섹션 -->
+        <div class="stats-section">
+            <h2>📊 170만 학생이 증명한 실제 효과</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">83.9%</div>
+                    <div class="stat-label">학생 흥미,<br>참여도 향상</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">71%</div>
+                    <div class="stat-label">문제풀이 속도,<br>정확도 향상</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">90.3%</div>
+                    <div class="stat-label">교사 업무 경감</div>
+                </div>
+            </div>
+            <p class="stats-note">* 2025년 1학기, 약 80개교 수학대왕 활용 교사의 설문 응답 기반</p>
+        </div>
+
+        <!-- 설명 섹션 -->
+        <div class="description">
+            <p>🚀 <strong>체험하기</strong>: 실제 서비스 화면에서 바로 체험</p>
+            <p>📚 <strong>사용법 가이드</strong>: 단계별 튜토리얼 확인</p>
+            <p>✨ <strong>체험계정</strong>: 개별 무료계정 신청 페이지</p>
+            <p>📖 <strong>상세 가이드</strong>: 완전한 사용법 문서</p>
+            <p class="brand-motto">💡 "Technology is just a tool, teacher makes the difference"</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>💡 전체화면 해제: ESC 또는 F11</p>
+        <p style="margin-top: 12px; font-size: 0.9rem;">박람회 부스 | 수학대왕 CLASS 체험존</p>
+    </footer>
+
+    <script>
+        // CONFIG 설정
+        const CONFIG = {
+            EXPERIENCE_URL: "https://class.iammathking.com/learning-status/student/U3R1ZGVudDoxNzUxMTU5/overview",
+            APPLY_URL: "https://www.iammathking.com/business-request/school?utm_source=coex2509",
+            CONSULT_URL: "https://cal.com/your-team/expo",
+            GUIDE_URL: "https://teamturing2.notion.site/d46d8fbb58de42f199bc698ce9f65610?pvs=4"
+        };
+
+        // UTM 파라미터 추가 함수
+        function addUTMParams(url) {
+            const utmParams = "utm_source=expo&utm_medium=qr";
+            if (url.includes('?')) {
+                return url + '&' + utmParams;
+            } else {
+                return url + '?' + utmParams;
+            }
+        }
+
+        // 체험하기 버튼
+        function openExperience() {
+            console.log('체험하기 버튼 클릭됨');
+            try {
+                window.open(CONFIG.EXPERIENCE_URL, '_blank', 'noopener,noreferrer');
+            } catch (error) {
+                console.error('체험하기 링크 열기 실패:', error);
+                alert('체험 페이지를 여는 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+            }
+        }
+
+        // 체험계정 신청 버튼 (하단 스크롤)
+        function openApply() {
+            console.log('체험계정 신청 버튼 클릭됨');
+            try {
+                const urlWithHash = addUTMParams(CONFIG.APPLY_URL) + '#bottom';
+                window.open(urlWithHash, '_blank', 'noopener,noreferrer');
+            } catch (error) {
+                console.error('체험계정 신청 링크 열기 실패:', error);
+                alert('신청 페이지를 여는 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+            }
+        }
+
+        // 상세 가이드 버튼
+        function openGuide() {
+            console.log('상세 가이드 버튼 클릭됨');
+            try {
+                window.open(CONFIG.GUIDE_URL, '_blank', 'noopener,noreferrer');
+            } catch (error) {
+                console.error('가이드 링크 열기 실패:', error);
+                alert('가이드 페이지를 여는 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+            }
+        }
+
+        // 튜토리얼 안내
+        function showTutorialAlert() {
+            console.log('튜토리얼 버튼 클릭됨');
+            alert('🎯 튜토리얼 사용법\n\n1. "체험하기" 버튼으로 새 탭에서 서비스를 엽니다\n2. 좌측에서 학생을 선택하세요\n3. 상단 메뉴로 과제, 클리닉, 분석 기능을 체험해보세요\n\n💡 궁금한 점이 있으면 현장 스태프에게 문의하세요!');
+        }
+
+        // 페이지 로드 완료
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('수학대왕 CLASS 박람회 페이지 로드 완료');
+            
+            // 키보드 이벤트 (ESC로 전체화면 해제 안내)
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    console.log('ESC 키 감지됨');
+                }
+            });
+        });
+
+        // 에러 핸들링
+        window.addEventListener('error', function(event) {
+            console.error('페이지 오류:', event.error);
+        });
+    </script>
+</body>
+</html>
