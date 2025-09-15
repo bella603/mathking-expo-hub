@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
   <html lang="ko">
   <head>
       <meta charset="UTF-8">
@@ -99,6 +99,10 @@
               margin-bottom: 12px;
           }
           .stat-label { color: #ffffff; font-weight: 600; font-size: 1.1rem; }
+          @media (max-width: 768px) {
+              .main-actions { grid-template-columns: 1fr; }
+              .big-btn { font-size: 1.1rem; padding: 20px; }
+          }
       </style>
   </head>
   <body>
@@ -124,7 +128,7 @@
 
           <div class="stats-section">
               <h2 style="text-align: center; color: #835EEB; margin-bottom: 
-  32px;">📊 170만 학생이 증명한 실제 효과</h2>
+  32px; font-size: 2rem;">📊 170만 학생이 증명한 실제 효과</h2>
               <div class="stats-grid">
                   <div class="stat-card">
                       <div class="stat-number">83.9%</div>
@@ -140,23 +144,30 @@
                       <div class="stat-label">교사 업무 경감</div>
                   </div>
               </div>
+              <p style="text-align: center; color: #8D94A0; font-size: 0.95rem;
+   margin-top: 24px; font-style: italic;">* 2025년 1학기, 약 80개교 수학대왕
+  활용 교사의 설문 응답 기반</p>
           </div>
       </div>
 
       <script>
           function openExperience() {
+              console.log('체험하기 버튼 클릭');
               window.open('https://class.iammathking.com/learning-status/studen
   t/U3R1ZGVudDoxNzUxMTU5/overview', '_blank');
           }
 
           function openApply() {
+              console.log('체험계정 신청 버튼 클릭');
               window.open('https://hi.iammathking.com/coex2509', '_blank');
           }
 
           function showTutorial() {
-              alert('📚 튜토리얼\n\n1. "체험하기" 버튼으로 새 탭에서 서비스를 
-  엽니다\n2. 좌측에서 학생을 선택하세요\n3. 상단 메뉴로 과제, 클리닉, 분석 
-  기능을 체험해보세요\n\n💡 궁금한 점이 있으면 현장 스태프에게 문의하세요!');
+              console.log('튜토리얼 버튼 클릭');
+              alert('📚 튜토리얼 사용법\n\n1. "체험하기" 버튼으로 새 탭에서 
+  서비스를 엽니다\n2. 좌측에서 학생을 선택하세요\n3. 상단 메뉴로 과제, 클리닉, 
+  분석 기능을 체험해보세요\n\n💡 궁금한 점이 있으면 현장 스태프에게 
+  문의하세요!');
           }
 
           console.log('수학대왕 CLASS 키오스크 시스템 준비 완료');
