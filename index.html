@@ -1,176 +1,160 @@
-  <!DOCTYPE html>
-  <html lang="ko">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>수학대왕 CLASS 체험 | 박람회 키오스크</title>
-      <style>
-          * { margin: 0; padding: 0; box-sizing: border-box; }
-          body {
-              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
-  Roboto, sans-serif;
-              background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%,
-  #2a2a2a 100%);
-              color: #ffffff;
-              line-height: 1.5;
-              min-height: 100vh;
-          }
-          .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-          .header { text-align: center; padding: 60px 0 40px; border-bottom:
-  1px solid #333; }
-          .header h1 {
-              font-size: clamp(2.5rem, 6vw, 4rem);
-              font-weight: 700;
-              background: linear-gradient(135deg, #835EEB 0%, #B794F6 50%,
-  #E879F9 100%);
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-              margin-bottom: 20px;
-          }
-          .highlight {
-              font-size: clamp(1.2rem, 4vw, 1.6rem);
-              color: #835EEB;
-              font-weight: 700;
-              margin-bottom: 16px;
-          }
-          .subtitle {
-              font-size: clamp(1rem, 3vw, 1.3rem);
-              color: #8D94A0;
-              margin-bottom: 20px;
-          }
-          .main-actions {
-              display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-              gap: 24px;
-              margin: 50px 0;
-          }
-          .big-btn {
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              padding: 28px 24px;
-              border: none;
-              border-radius: 20px;
-              color: white;
-              font-size: 1.3rem;
-              font-weight: 700;
-              cursor: pointer;
-              min-height: 100px;
-              transition: all 0.3s ease;
-          }
-          .big-btn:hover { transform: translateY(-6px); }
-          .big-btn.primary {
-              background: linear-gradient(135deg, #835EEB 0%, #9F7AEA 50%,
-  #B794F6 100%);
-          }
-          .big-btn.secondary {
-              background: linear-gradient(135deg, #4C51BF 0%, #667EEA 50%,
-  #764BA2 100%);
-          }
-          .big-btn.success {
-              background: linear-gradient(135deg, #48BB78 0%, #68D391 50%,
-  #9AE6B4 100%);
-          }
-          .stats-section {
-              background: rgba(131, 94, 235, 0.1);
-              padding: 40px;
-              border-radius: 24px;
-              margin: 60px 0;
-          }
-          .stats-grid {
-              display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-              gap: 28px;
-              margin: 40px 0;
-          }
-          .stat-card {
-              text-align: center;
-              padding: 32px 24px;
-              background: rgba(255,255,255,0.05);
-              border-radius: 20px;
-              border: 1px solid rgba(131, 94, 235, 0.3);
-          }
-          .stat-number {
-              font-size: 3.2rem;
-              font-weight: 800;
-              background: linear-gradient(135deg, #835EEB 0%, #E879F9 100%);
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-              margin-bottom: 12px;
-          }
-          .stat-label { color: #ffffff; font-weight: 600; font-size: 1.1rem; }
-          @media (max-width: 768px) {
-              .main-actions { grid-template-columns: 1fr; }
-              .big-btn { font-size: 1.1rem; padding: 20px; }
-          }
-      </style>
-  </head>
-  <body>
-      <div class="container">
-          <header class="header">
-              <h1>🏆 수학대왕 CLASS</h1>
-              <p class="highlight">170만 학생이 선택한 1등 AI 수학프로그램</p>
-              <p class="subtitle">1:1 개인 맞춤형 교육의 실현<br>초3부터
-  고3까지 아우르는 AI 수학 학습 서비스</p>
-          </header>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수학대왕 CLASS 체험 | 박람회 키오스크</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2a2a2a 100%);
+            color: #ffffff;
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header { text-align: center; padding: 60px 0 40px; border-bottom: 1px solid #333; }
+        .header h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #835EEB 0%, #B794F6 50%, #E879F9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        .highlight {
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            color: #835EEB;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .subtitle {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: #8D94A0;
+            margin-bottom: 20px;
+        }
+        .main-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 50px 0;
+        }
+        .big-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 28px 24px;
+            border: none;
+            border-radius: 20px;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            min-height: 100px;
+            transition: all 0.3s ease;
+        }
+        .big-btn:hover { transform: translateY(-6px); }
+        .big-btn.primary {
+            background: linear-gradient(135deg, #835EEB 0%, #9F7AEA 50%, #B794F6 100%);
+        }
+        .big-btn.secondary {
+            background: linear-gradient(135deg, #4C51BF 0%, #667EEA 50%, #764BA2 100%);
+        }
+        .big-btn.success {
+            background: linear-gradient(135deg, #48BB78 0%, #68D391 50%, #9AE6B4 100%);
+        }
+        .stats-section {
+            background: rgba(131, 94, 235, 0.1);
+            padding: 40px;
+            border-radius: 24px;
+            margin: 60px 0;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 28px;
+            margin: 40px 0;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 32px 24px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(131, 94, 235, 0.3);
+        }
+        .stat-number {
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #835EEB 0%, #E879F9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+        }
+        .stat-label { color: #ffffff; font-weight: 600; font-size: 1.1rem; }
+        @media (max-width: 768px) {
+            .main-actions { grid-template-columns: 1fr; }
+            .big-btn { font-size: 1.1rem; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🏆 수학대왕 CLASS</h1>
+            <p class="highlight">170만 학생이 선택한 1등 AI 수학프로그램</p>
+            <p class="subtitle">1:1 개인 맞춤형 교육의 실현<br>초3부터 고3까지 아우르는 AI 수학 학습 서비스</p>
+        </header>
 
-          <div class="main-actions">
-              <button class="big-btn primary" onclick="openExperience()">
-                  🚀 지금 바로 체험하기
-              </button>
-              <button class="big-btn secondary" onclick="showTutorial()">
-                  📚 사용법 가이드 보기
-              </button>
-              <button class="big-btn success" onclick="openApply()">
-                  ✨ 체험계정 신청
-              </button>
-          </div>
+        <div class="main-actions">
+            <button class="big-btn primary" onclick="openExperience()">
+                🚀 지금 바로 체험하기
+            </button>
+            <button class="big-btn secondary" onclick="showTutorial()">
+                📚 사용법 가이드 보기
+            </button>
+            <button class="big-btn success" onclick="openApply()">
+                ✨ 체험계정 신청
+            </button>
+        </div>
 
-          <div class="stats-section">
-              <h2 style="text-align: center; color: #835EEB; margin-bottom: 
-  32px; font-size: 2rem;">📊 170만 학생이 증명한 실제 효과</h2>
-              <div class="stats-grid">
-                  <div class="stat-card">
-                      <div class="stat-number">83.9%</div>
-                      <div class="stat-label">학생 흥미,<br>참여도 향상</div>
-                  </div>
-                  <div class="stat-card">
-                      <div class="stat-number">71%</div>
-                      <div class="stat-label">문제풀이 속도,<br>정확도
-  향상</div>
-                  </div>
-                  <div class="stat-card">
-                      <div class="stat-number">90.3%</div>
-                      <div class="stat-label">교사 업무 경감</div>
-                  </div>
-              </div>
-              <p style="text-align: center; color: #8D94A0; font-size: 0.95rem;
-   margin-top: 24px; font-style: italic;">* 2025년 1학기, 약 80개교 수학대왕
-  활용 교사의 설문 응답 기반</p>
-          </div>
-      </div>
+        <div class="stats-section">
+            <h2 style="text-align: center; color: #835EEB; margin-bottom: 32px; font-size: 2rem;">📊 170만 학생이 증명한 실제 효과</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">83.9%</div>
+                    <div class="stat-label">학생 흥미,<br>참여도 향상</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">71%</div>
+                    <div class="stat-label">문제풀이 속도,<br>정확도 향상</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">90.3%</div>
+                    <div class="stat-label">교사 업무 경감</div>
+                </div>
+            </div>
+            <p style="text-align: center; color: #8D94A0; font-size: 0.95rem; margin-top: 24px; font-style: italic;">* 2025년 1학기, 약 80개교 수학대왕 활용 교사의 설문 응답 기반</p>
+        </div>
+    </div>
 
-      <script>
-          function openExperience() {
-              console.log('체험하기 버튼 클릭');
-              window.open('https://class.iammathking.com/learning-status/studen
-  t/U3R1ZGVudDoxNzUxMTU5/overview', '_blank');
-          }
+    <script>
+        function openExperience() {
+            console.log('체험하기 버튼 클릭');
+            window.open('https://class.iammathking.com/learning-status/student/U3R1ZGVudDoxNzUxMTU5/overview', '_blank');
+        }
 
-          function openApply() {
-              console.log('체험계정 신청 버튼 클릭');
-              window.open('https://hi.iammathking.com/coex2509', '_blank');
-          }
+        function openApply() {
+            console.log('체험계정 신청 버튼 클릭');
+            window.open('https://hi.iammathking.com/coex2509', '_blank');
+        }
 
-          function showTutorial() {
-              console.log('튜토리얼 버튼 클릭');
-              alert('📚 튜토리얼 사용법\n\n1. "체험하기" 버튼으로 새 탭에서 
-  서비스를 엽니다\n2. 좌측에서 학생을 선택하세요\n3. 상단 메뉴로 과제, 클리닉, 
-  분석 기능을 체험해보세요\n\n💡 궁금한 점이 있으면 현장 스태프에게 
-  문의하세요!');
-          }
+        function showTutorial() {
+            console.log('튜토리얼 버튼 클릭');
+            alert('📚 튜토리얼 사용법\\n\\n1. "체험하기" 버튼으로 새 탭에서 서비스를 엽니다\\n2. 좌측에서 학생을 선택하세요\\n3. 상단 메뉴로 과제, 클리닉, 분석 기능을 체험해보세요\\n\\n💡 궁금한 점이 있으면 현장 스태프에게 문의하세요!');
+        }
 
-          console.log('수학대왕 CLASS 키오스크 시스템 준비 완료');
-      </script>
-  </body>
-  </html>
+        console.log('수학대왕 CLASS 키오스크 시스템 준비 완료');
+    </script>
+</body>
+</html>
