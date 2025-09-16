@@ -1,181 +1,121 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>수학대왕 CLASS 체험 | 박람회 키오스크</title>
   <link rel="icon" href="data:image/svg+xml,<svg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'><rect width='32' height='32' rx='6' fill='%23835EEB'/><text x='16' y='22' text-anchor='middle' fill='white' font-family='Arial, sans-serif' font-size='18' font-weight='bold'>수</text></svg>" type="image/svg+xml">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin:0; padding:0; box-sizing:border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', sans-serif;
-      background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2a2a2a 100%);
-      color: #ffffff;
-      line-height: 1.5;
-      min-height: 100vh;
+      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans KR',sans-serif;
+      background:linear-gradient(135deg,#000 0%,#1a1a1a 50%,#2a2a2a 100%);
+      color:#fff; line-height:1.5; min-height:100vh;
     }
-    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-    .header { text-align: center; padding: 60px 0 40px; border-bottom: 1px solid #333; }
-    .logo-section { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px; }
-    .header h1 {
-      font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700; margin: 0;
-      background: linear-gradient(135deg, #835EEB 0%, #B794F6 50%, #E879F9 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text; line-height: 1.2;
+    .container { max-width:1200px; margin:0 auto; padding:20px; }
+    .header { text-align:center; padding:60px 0 40px; border-bottom:1px solid #333; }
+    .logo-section { display:flex; align-items:center; justify-content:center; gap:15px; margin-bottom:20px; }
+    .header h1{
+      font-size:clamp(2.5rem,6vw,4rem); font-weight:700; margin:0;
+      background:linear-gradient(135deg,#835EEB 0%,#B794F6 50%,#E879F9 100%);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1.2;
     }
-    .highlight {
-      font-size: clamp(1.2rem, 4vw, 1.6rem); color: #835EEB; font-weight: 700;
-      margin-bottom: 16px; text-shadow: 0 2px 4px rgba(131, 94, 235, 0.3);
-    }
-    .subtitle { font-size: clamp(1rem, 3vw, 1.3rem); color: #8D94A0; margin-bottom: 20px; line-height: 1.4; }
-    .fullscreen-hint { font-size: 0.9rem; color: #575C64; margin-top: 15px; }
+    .highlight{ font-size:clamp(1.2rem,4vw,1.6rem); color:#835EEB; font-weight:700; margin-bottom:16px; text-shadow:0 2px 4px rgba(131,94,235,.3);}
+    .subtitle{ font-size:clamp(1rem,3vw,1.3rem); color:#8D94A0; margin-bottom:20px; }
+    .fullscreen-hint{ font-size:.9rem; color:#575C64; margin-top:15px; }
 
-    /* 튜토리얼 영상 섹션 */
-    .tutorial-section {
-      background: linear-gradient(135deg, rgba(131, 94, 235, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
-      backdrop-filter: blur(10px); padding: 40px; border-radius: 24px;
-      border: 1px solid rgba(131, 94, 235, 0.2); margin: 40px 0;
+    /* 튜토리얼 */
+    .tutorial-section{
+      background:linear-gradient(135deg,rgba(131,94,235,.1) 0%,rgba(0,0,0,.8) 100%);
+      backdrop-filter:blur(10px); padding:40px; border-radius:24px; border:1px solid rgba(131,94,235,.2); margin:40px 0;
     }
-    .tutorial-section h2 {
-      text-align: center; background: linear-gradient(135deg, #835EEB 0%, #B794F6 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text; margin-bottom: 24px;
-      font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 700;
+    .tutorial-section h2{
+      text-align:center;
+      background:linear-gradient(135deg,#835EEB 0%,#B794F6 100%);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      margin-bottom:24px; font-size:clamp(1.5rem,4vw,2rem); font-weight:700;
     }
-    .video-container {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-      margin: 0 auto 20px;
-      max-width: 960px;
+    .video-container{
+      position:relative; width:100%; aspect-ratio:16/9; border-radius:12px; overflow:hidden;
+      box-shadow:0 8px 24px rgba(0,0,0,.3); margin:0 auto 20px; max-width:960px;
     }
-    .video-container iframe {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      border: 0;
-    }
+    .video-container iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
 
-    /* 4단계 가이드 */
-    .guide-steps {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px; margin: 30px 0;
+    /* 가이드 */
+    .guide-steps{ display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; margin:30px 0; }
+    .step-item{ background:rgba(255,255,255,.05); border:1px solid #333; border-radius:16px; padding:20px; text-align:center; }
+    .step-number{
+      background:linear-gradient(135deg,#835EEB 0%,#B794F6 100%);
+      color:#fff; width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+      font-weight:bold; margin:0 auto 10px; font-size:1.2rem;
     }
-    .step-item {
-      background: rgba(255, 255, 255, 0.05); border: 1px solid #333;
-      border-radius: 16px; padding: 20px; text-align: center;
-    }
-    .step-number {
-      background: linear-gradient(135deg, #835EEB 0%, #B794F6 100%);
-      color: white; width: 40px; height: 40px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: bold; margin: 0 auto 10px; font-size: 1.2rem;
-    }
-    .step-title { color: #ffffff; font-weight: 600; margin-bottom: 8px; }
-    .step-desc { color: #8D94A0; font-size: 0.9rem; }
+    .step-title{ color:#fff; font-weight:600; margin-bottom:8px; }
+    .step-desc{ color:#8D94A0; font-size:.9rem; }
 
-    .main-actions {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px; margin: 50px 0;
+    /* 버튼 */
+    .main-actions{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px; margin:50px 0; }
+    .big-btn{
+      display:flex; align-items:center; justify-content:center;
+      padding:28px 24px; border:none; border-radius:20px; color:#fff; font-size:1.3rem; font-weight:700;
+      cursor:pointer; min-height:100px; text-decoration:none; position:relative; overflow:hidden;
+      transition:all .4s cubic-bezier(.175,.885,.32,1.275);
     }
-    .big-btn {
-      display: flex; align-items: center; justify-content: center;
-      padding: 28px 24px; border: none; border-radius: 20px;
-      color: white; font-size: 1.3rem; font-weight: 700;
-      cursor: pointer; min-height: 100px; text-decoration: none;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      position: relative; overflow: hidden;
+    .big-btn::before{
+      content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent); transition:left .5s;
     }
-    .big-btn::before {
-      content: ''; position: absolute; top: 0; left: -100%;
-      width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.5s;
+    .big-btn:hover::before{ left:100%; }
+    .big-btn:hover{ transform:translateY(-6px) scale(1.02); box-shadow:0 20px 40px rgba(131,94,235,.4); }
+    .big-btn:active{ transform:translateY(-2px) scale(.98); }
+    .big-btn.primary{ background:linear-gradient(135deg,#835EEB 0%,#9F7AEA 50%,#B794F6 100%); box-shadow:0 12px 24px rgba(131,94,235,.3); }
+    .big-btn.secondary{ background:linear-gradient(135deg,#4C51BF 0%,#667EEA 50%,#764BA2 100%); box-shadow:0 12px 24px rgba(76,81,191,.3); }
+    .big-btn.success{ background:linear-gradient(135deg,#48BB78 0%,#68D391 50%,#9AE6B4 100%); box-shadow:0 12px 24px rgba(72,187,120,.3); }
+
+    /* 통계 */
+    .stats-section{
+      background:linear-gradient(135deg,rgba(131,94,235,.1) 0%,rgba(0,0,0,.8) 100%);
+      backdrop-filter:blur(10px); padding:40px; border-radius:24px; border:1px solid rgba(131,94,235,.2); margin:60px 0;
     }
-    .big-btn:hover::before { left: 100%; }
-    .big-btn:hover {
-      transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(131, 94, 235, 0.4);
+    .stats-section h2{
+      text-align:center; background:linear-gradient(135deg,#835EEB 0%,#B794F6 100%);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      margin-bottom:32px; font-size:clamp(1.5rem,4vw,2rem); font-weight:700;
     }
-    .big-btn:active { transform: translateY(-2px) scale(0.98); }
-    .big-btn.primary {
-      background: linear-gradient(135deg, #835EEB 0%, #9F7AEA 50%, #B794F6 100%);
-      box-shadow: 0 12px 24px rgba(131, 94, 235, 0.3);
+    .stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:28px; margin:40px 0; }
+    .stat-card{
+      text-align:center; padding:32px 24px;
+      background:linear-gradient(135deg,rgba(255,255,255,.05) 0%,rgba(131,94,235,.1) 100%);
+      border-radius:20px; border:1px solid rgba(131,94,235,.3); transition:.3s; backdrop-filter:blur(10px);
     }
-    .big-btn.secondary {
-      background: linear-gradient(135deg, #4C51BF 0%, #667EEA 50%, #764BA2 100%);
-      box-shadow: 0 12px 24px rgba(76, 81, 191, 0.3);
+    .stat-card:hover{ transform:translateY(-5px); box-shadow:0 15px 30px rgba(131,94,235,.2); border-color:#835EEB; }
+    .stat-number{
+      font-size:3.2rem; font-weight:800;
+      background:linear-gradient(135deg,#835EEB 0%,#E879F9 100%);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:12px; line-height:1;
     }
-    .big-btn.success {
-      background: linear-gradient(135deg, #48BB78 0%, #68D391 50%, #9AE6B4 100%);
-      box-shadow: 0 12px 24px rgba(72, 187, 120, 0.3);
+    .stat-label{ color:#fff; font-weight:600; font-size:1.1rem; }
+    .stats-note{ text-align:center; color:#8D94A0; font-size:.95rem; margin-top:24px; font-style:italic; }
+
+    .description{ text-align:center; margin:50px 0; padding:30px; background:rgba(255,255,255,.02); border-radius:16px; border:1px solid rgba(255,255,255,.05); }
+    .description p{ color:#8D94A0; font-size:1.1rem; margin:8px 0; }
+    .brand-motto{ color:#835EEB; font-weight:600; font-size:1.2rem; margin-top:20px; }
+
+    footer{ text-align:center; padding:50px 0; color:#575C64; border-top:1px solid #333; margin-top:60px; }
+
+    @media (max-width:768px){
+      .container{ padding:16px; }
+      .logo-section{ flex-direction:column; gap:10px; }
+      .main-actions{ grid-template-columns:1fr; gap:20px; }
+      .big-btn{ padding:24px 20px; font-size:1.2rem; min-height:90px; }
+      .stats-section{ padding:28px 20px; }
+      .stat-card{ padding:24px 16px; }
     }
 
-    .stats-section {
-      background: linear-gradient(135deg, rgba(131, 94, 235, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
-      backdrop-filter: blur(10px); padding: 40px; border-radius: 24px;
-      border: 1px solid rgba(131, 94, 235, 0.2); margin: 60px 0;
-    }
-    .stats-section h2 {
-      text-align: center; background: linear-gradient(135deg, #835EEB 0%, #B794F6 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text; margin-bottom: 32px;
-      font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 700;
-    }
-    .stats-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 28px; margin: 40px 0;
-    }
-    .stat-card {
-      text-align: center; padding: 32px 24px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(131, 94, 235, 0.1) 100%);
-      border-radius: 20px; border: 1px solid rgba(131, 94, 235, 0.3);
-      transition: all 0.3s ease; backdrop-filter: blur(10px);
-    }
-    .stat-card:hover {
-      transform: translateY(-5px); box-shadow: 0 15px 30px rgba(131, 94, 235, 0.2);
-      border-color: #835EEB;
-    }
-    .stat-number {
-      font-size: 3.2rem; font-weight: 800;
-      background: linear-gradient(135deg, #835EEB 0%, #E879F9 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text; margin-bottom: 12px; line-height: 1;
-    }
-    .stat-label { color: #ffffff; font-weight: 600; font-size: 1.1rem; line-height: 1.3; }
-    .stats-note { text-align: center; color: #8D94A0; font-size: 0.95rem; margin-top: 24px; font-style: italic; }
-
-    .description {
-      text-align: center; margin: 50px 0; padding: 30px;
-      background: rgba(255, 255, 255, 0.02); border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    .description p { color: #8D94A0; font-size: 1.1rem; margin: 8px 0; line-height: 1.5; }
-    .brand-motto { color: #835EEB; font-weight: 600; font-size: 1.2rem; margin-top: 20px; }
-
-    footer {
-      text-align: center; padding: 50px 0; color: #575C64; border-top: 1px solid #333; margin-top: 60px;
-    }
-
-    @media (max-width: 768px) {
-      .container { padding: 16px; }
-      .logo-section { flex-direction: column; gap: 10px; }
-      .main-actions { grid-template-columns: 1fr; gap: 20px; }
-      .big-btn { padding: 24px 20px; font-size: 1.2rem; min-height: 90px; }
-      .stats-section { padding: 28px 20px; }
-      .stat-card { padding: 24px 16px; }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .container > * { animation: fadeInUp 0.6s ease-out; }
-    .main-actions .big-btn:nth-child(1) { animation-delay: 0.1s; }
-    .main-actions .big-btn:nth-child(2) { animation-delay: 0.2s; }
-    .main-actions .big-btn:nth-child(3) { animation-delay: 0.3s; }
+    @keyframes fadeInUp{ from{opacity:0; transform:translateY(30px);} to{opacity:1; transform:translateY(0);} }
+    .container > *{ animation:fadeInUp .6s ease-out; }
+    .main-actions .big-btn:nth-child(1){ animation-delay:.1s; }
+    .main-actions .big-btn:nth-child(2){ animation-delay:.2s; }
+    .main-actions .big-btn:nth-child(3){ animation-delay:.3s; }
   </style>
 </head>
 <body>
@@ -186,11 +126,11 @@
         <h1>🏆 수학대왕 CLASS</h1>
       </div>
       <p class="highlight">170만 학생이 선택한 1등 AI 수학프로그램</p>
-      <p class="subtitle">1:1 개인 맞춤형 교육의 실현<br>초3부터 고3까지 아우르는 AI 수학 학습 서비스</p>
+      <p class="subtitle">1:1 개인 맞춤형 교육의 실현<br/>초3부터 고3까지 아우르는 AI 수학 학습 서비스</p>
       <div class="fullscreen-hint">💡 전체화면(F11)으로 보시면 더 편합니다</div>
     </header>
 
-    <!-- 튜토리얼 영상 섹션 -->
+    <!-- 튜토리얼 -->
     <section class="tutorial-section" id="tutorial">
       <h2>🎬 맞춤형 학습지 제작 튜토리얼 영상</h2>
       <div class="video-container">
@@ -198,11 +138,10 @@
           src="https://www.youtube.com/embed/oA3gU8UoL5E?rel=0&autoplay=0&mute=1&loop=1&playlist=oA3gU8UoL5E"
           title="수학대왕 CLASS 맞춤형 학습지 제작 튜토리얼"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
+          allowfullscreen></iframe>
       </div>
 
-      <!-- 4단계 가이드 -->
+      <!-- 가이드 4단계 -->
       <div class="guide-steps">
         <div class="step-item">
           <div class="step-number">1</div>
@@ -227,40 +166,25 @@
       </div>
     </section>
 
-    <!-- 메인 액션 버튼들 -->
+    <!-- 메인 액션: a 링크로 교체 -->
     <div class="main-actions">
-      <button class="big-btn primary" onclick="openExperience()">
-        🚀 지금 바로 체험하기
-      </button>
-      <button class="big-btn secondary" onclick="openGuide()">
-        📚 사용법 가이드 보기
-      </button>
-      <button class="big-btn success" onclick="openApply()">
-        ✨ 체험계정 신청
-      </button>
+      <a class="big-btn primary" href="https://class.iammathking.com/learning-status/student/U3R1ZGVudDoxNzUxMTU5/overview?utm_source=expo&utm_medium=hub&utm_campaign=coex2509" target="_blank" rel="noopener noreferrer">🚀 지금 바로 체험하기</a>
+      <a class="big-btn secondary" href="https://www.notion.so/teamturing2/d46d8fbb58de42f199bc698ce9f65610?source=copy_link" target="_blank" rel="noopener noreferrer">📚 사용법 가이드 보기</a>
+      <a class="big-btn success" href="https://hi.iammathking.com/coex2509?utm_source=expo&utm_medium=hub&utm_campaign=coex2509" target="_blank" rel="noopener noreferrer">✨ 체험계정 신청</a>
     </div>
 
-    <!-- 실증 데이터 섹션 -->
+    <!-- 실증 데이터 -->
     <div class="stats-section">
       <h2>📊 170만 학생이 증명한 실제 효과</h2>
       <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-number">83.9%</div>
-          <div class="stat-label">학생 흥미,<br>참여도 향상</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">71%</div>
-          <div class="stat-label">문제풀이 속도,<br>정확도 향상</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">90.3%</div>
-          <div class="stat-label">교사 업무 경감</div>
-        </div>
+        <div class="stat-card"><div class="stat-number">83.9%</div><div class="stat-label">학생 흥미,<br/>참여도 향상</div></div>
+        <div class="stat-card"><div class="stat-number">71%</div><div class="stat-label">문제풀이 속도,<br/>정확도 향상</div></div>
+        <div class="stat-card"><div class="stat-number">90.3%</div><div class="stat-label">교사 업무 경감</div></div>
       </div>
       <p class="stats-note">* 2025년 1학기, 약 80개교 수학대왕 활용 교사의 설문 응답 기반</p>
     </div>
 
-    <!-- 설명 섹션 -->
+    <!-- 설명 -->
     <div class="description">
       <p>🚀 <strong>체험하기</strong>: 실제 서비스 화면에서 바로 체험</p>
       <p>📚 <strong>사용법 가이드</strong>: 단계별 튜토리얼 확인</p>
@@ -271,20 +195,18 @@
 
   <footer>
     <p>💡 전체화면 해제: ESC 또는 F11</p>
-    <p style="margin-top: 12px; font-size: 0.9rem;">박람회 부스 | 수학대왕 CLASS 체험존</p>
+    <p style="margin-top:12px; font-size:.9rem;">박람회 부스 | 수학대왕 CLASS 체험존</p>
   </footer>
 
+  <!-- JS: F11 전체화면 전용 -->
   <script>
-    function openExperience() {
-      console.log('체험하기 버튼 클릭됨');
-      window.open(
-        'https://class.iammathking.com/learning-status/student/U3R1ZGVudDoxNzUxMTU5/overview?utm_source=expo&utm_medium=hub&utm_campaign=coex2509',
-        '_blank',
-        'noopener,noreferrer'
-      );
-    }
-
-    function openGuide() {
-      console.log('사용법 가이드 버튼 클릭됨');
-      window.open(
-        'https://www.notion.so/teamturing2
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'F11') {
+        e.preventDefault();
+        if (document.fullscreenElement) document.exitFullscreen();
+        else document.documentElement.requestFullscreen();
+      }
+    });
+  </script>
+</body>
+</html>
