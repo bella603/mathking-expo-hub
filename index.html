@@ -17,7 +17,6 @@
     .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
     .header { text-align: center; padding: 60px 0 40px; border-bottom: 1px solid #333; }
     .logo-section { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px; }
-    .logo { border-radius: 8px; }
     .header h1 {
       font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700; margin: 0;
       background: linear-gradient(135deg, #835EEB 0%, #B794F6 50%, #E879F9 100%);
@@ -46,12 +45,12 @@
     .video-container {
       position: relative;
       width: 100%;
-      aspect-ratio: 16 / 9;         /* 완전 반응형 */
+      aspect-ratio: 16 / 9;
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
       margin: 0 auto 20px;
-      max-width: 960px;              /* 큰 화면에서 적당한 최대폭 */
+      max-width: 960px;
     }
     .video-container iframe {
       position: absolute; inset: 0;
@@ -193,11 +192,11 @@
 
     <!-- 튜토리얼 영상 섹션 -->
     <section class="tutorial-section" id="tutorial">
-      <h2>🎬 튜토리얼 영상</h2>
+      <h2>🎬 맞춤형 학습지 제작 튜토리얼 영상</h2>
       <div class="video-container">
         <iframe
           src="https://www.youtube.com/embed/oA3gU8UoL5E?rel=0&autoplay=0&mute=1&loop=1&playlist=oA3gU8UoL5E"
-          title="수학대왕 CLASS 튜토리얼"
+          title="수학대왕 CLASS 맞춤형 학습지 제작 튜토리얼"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen>
         </iframe>
@@ -207,18 +206,18 @@
       <div class="guide-steps">
         <div class="step-item">
           <div class="step-number">1</div>
-          <div class="step-title">튜토리얼 영상 시청</div>
-          <div class="step-desc">위 영상을 통해 기본 사용법을 익혀보세요</div>
+          <div class="step-title">튜토리얼 시청</div>
+          <div class="step-desc">영상으로 제작 흐름을 확인하세요</div>
         </div>
         <div class="step-item">
           <div class="step-number">2</div>
           <div class="step-title">실제 서비스 체험</div>
-          <div class="step-desc">아래 체험하기 버튼으로 직접 사용해보세요</div>
+          <div class="step-desc">아래 버튼으로 직접 사용해보세요</div>
         </div>
         <div class="step-item">
           <div class="step-number">3</div>
           <div class="step-title">상세 가이드 확인</div>
-          <div class="step-desc">사용법 가이드에서 더 자세한 정보를 확인하세요</div>
+          <div class="step-desc">필요 시 추가 가이드를 참고하세요</div>
         </div>
         <div class="step-item">
           <div class="step-number">4</div>
@@ -288,41 +287,4 @@
     function openGuide() {
       console.log('사용법 가이드 버튼 클릭됨');
       window.open(
-        'https://www.notion.so/teamturing2/d46d8fbb58de42f199bc698ce9f65610?source=copy_link',
-        '_blank',
-        'noopener,noreferrer'
-      );
-    }
-
-    function openApply() {
-      console.log('체험계정 신청 버튼 클릭됨');
-      window.open(
-        'https://hi.iammathking.com/coex2509?utm_source=expo&utm_medium=hub&utm_campaign=coex2509',
-        '_blank',
-        'noopener,noreferrer'
-      );
-    }
-
-    // 키보드 단축키
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'F11') {
-        e.preventDefault();
-        if (document.fullscreenElement) {
-          document.exitFullscreen();
-        } else {
-          document.documentElement.requestFullscreen();
-        }
-      }
-      if (e.ctrlKey || e.metaKey) {
-        switch (e.key) {
-          case '1': e.preventDefault(); openExperience(); break;
-          case '2': e.preventDefault(); openGuide(); break;
-          case '3': e.preventDefault(); openApply(); break;
-        }
-      }
-    });
-
-    console.log('수학대왕 CLASS 키오스크 페이지 로드 완료');
-  </script>
-</body>
-</html>
+        'https://www.notion.so/teamturing2
